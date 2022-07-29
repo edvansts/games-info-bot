@@ -3,8 +3,10 @@ import translate from "@vitalets/google-translate-api";
 
 const getGameInfo = async (gameName: string) => {
   try {
+    const normalizedGameName = normalizeText(gameName);
+
     const response = await GamesApi.get(
-      `/games/${gameName}?key=${GAMES_API_TOKEN}`
+      `/games/${normalizedGameName}?key=${GAMES_API_TOKEN}`
     );
     const data = response.data;
 
@@ -27,6 +29,10 @@ const getGameInfo = async (gameName: string) => {
     console.log(err);
     return;
   }
+};
+
+const normalizeText = (text: string) => {
+  return text.replace(" ", "-").toLowerCase();
 };
 
 export { getGameInfo };
