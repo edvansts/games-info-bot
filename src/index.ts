@@ -1,6 +1,17 @@
 import "dotenv/config";
 import { Telegraf } from "telegraf";
+import express from "express";
 import { getGameInfo } from "./GameInfo";
+const expressApp = express();
+
+const port = process.env.PORT || 3000;
+
+expressApp.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+expressApp.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
 
 const BOT_TOKEN = process.env.BOT_TOKEN as string;
 
