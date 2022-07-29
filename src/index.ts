@@ -4,7 +4,7 @@ import express from "express";
 import { getGameInfo } from "./GameInfo";
 const expressApp = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 expressApp.get("/", (req, res) => {
   res.send("Hello World!");
